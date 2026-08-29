@@ -1,0 +1,548 @@
+/* General Body Styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  /* Fallback if Poppins doesn't load */
+  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Use min-height for better flexibility */
+  background-color: #f0f2f5; /* Light grey background for the page */
+  margin: 0;
+  padding: 20px; /* Add some padding for smaller screens */
+  color: var(--text-primary-light);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+:root {
+    --primary-color: #4f46e5;
+    --background-color-light: #f0f2f5;
+    --background-color-dark: #121212;
+    --surface-color-light: #ffffff;
+    --surface-color-dark: #1e1e1e;
+    --text-primary-light: #1e293b;
+    --text-primary-dark: #ffffff;
+    --text-secondary-light: #64748b;
+    --text-secondary-dark: rgba(255, 255, 255, 0.7);
+}
+
+body {
+    background-color: var(--background-color-light);
+}
+
+.dark-theme body {
+    background-color: var(--background-color-dark);
+    color: var(--text-primary-dark);
+}
+
+.dark-theme .login-container {
+    background-color: var(--surface-color-dark);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+.dark-theme .login-form-section {
+    background-color: var(--surface-color-dark);
+}
+
+.dark-theme .login-form-section h2 {
+    color: var(--text-primary-dark);
+}
+
+.dark-theme .login-form-section .subtitle {
+    color: var(--text-secondary-dark);
+}
+
+.dark-theme .form-group input[type="email"],
+.dark-theme .form-group input[type="password"] {
+    color: var(--text-primary-dark);
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark-theme .form-group input[type="email"]:focus,
+.dark-theme .form-group input[type="password"]:focus {
+    border-bottom-color: var(--primary-color);
+}
+
+.dark-theme .form-group .input-icon {
+    color: var(--text-secondary-dark);
+}
+
+.dark-theme .remember-me {
+    color: var(--text-secondary-dark);
+}
+
+/* Main Login Container */
+.login-container {
+  display: flex;
+  width: 100%;
+  max-width: 1000px; /* Increased max-width for a wider layout */
+  background-color: #fff;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+  border-radius: 24px; /* More rounded corners */
+  overflow: hidden;
+}
+
+/* Decorative Section (Left Side) */
+.decorative-section {
+  flex-basis: 50%;
+  background: linear-gradient(135deg, #1e0a45 0%, #0d031f 100%); /* Updated gradient */
+  color: #fff;
+  padding: 60px 40px; /* Increased padding */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.decorative-section .logo-image {
+  width: 400px; /* Adjust as needed */
+  height: auto; /* Maintain aspect ratio */
+  margin-bottom: 30px;
+}
+
+.decorative-section h1 {
+  font-size: 32px; /* Slightly smaller to fit design */
+  font-weight: 700;
+  margin-top: 20px;
+}
+
+/* Login Form Section (Right Side) */
+.login-form-section {
+  flex-basis: 50%;
+  padding: 50px 60px; /* Increased padding */
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-form-section h2 {
+  font-size: 36px; /* Larger "Sign in" title */
+  font-weight: 700;
+  color: #1e293b; /* Darker text color */
+  margin-bottom: 10px;
+}
+
+.login-form-section .subtitle {
+  font-size: 15px;
+  color: #64748b; /* Softer text color */
+  margin-bottom: 30px;
+}
+
+.login-form-section .subtitle a {
+  color: #4f46e5; /* Indigo color for link */
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.login-form-section .subtitle a:hover {
+  text-decoration: underline;
+}
+
+/* Form Group Styling (for input fields) */
+.form-group {
+  margin-bottom: 25px; /* Increased spacing */
+  position: relative; /* For icon positioning */
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  color: #334155; /* Slightly darker label color */
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.form-group input[type="email"],
+.form-group input[type="password"] {
+  width: 100%;
+  padding: 12px 12px 12px 40px; /* Add padding for icon */
+  font-size: 15px;
+  border: none; /* Remove default border */
+  border-bottom: 2px solid #cbd5e1; /* Light grey bottom border */
+  outline: none;
+  background-color: transparent;
+  transition: border-color 0.3s;
+  color: #1e293b;
+}
+
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus {
+  border-bottom-color: #4f46e5; /* Indigo border on focus */
+}
+
+/* Input Field Icons */
+.form-group .input-icon {
+  position: absolute;
+  left: 10px;
+  /* Vertically centering the icon. Adjusted based on typical line height and padding. */
+  /* The JavaScript handles dynamic adjustment based on content/focus. */
+  top: 70%; /* Default position, JS might override */
+  transform: translateY(-50%);
+  color: #94a3b8; /* Icon color */
+  pointer-events: none; /* Make icon non-interactive */
+}
+
+/* Styles for Webkit Autofill */
+.form-group input:-webkit-autofill,
+.form-group input:-webkit-autofill:hover,
+.form-group input:-webkit-autofill:focus,
+.form-group input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important; /* Keep background white */
+  box-shadow: 0 0 0 30px white inset !important;
+  -webkit-text-fill-color: #1e293b !important; /* Ensure text color is not overridden */
+}
+
+/* Options (Remember me & Forgot Password) */
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  color: #475569; /* Text color for remember me */
+}
+
+.remember-me input[type="checkbox"] {
+  margin-right: 8px;
+  accent-color: #4f46e5; /* Indigo accent for checkbox */
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.options a {
+  color: #4f46e5; /* Indigo color for forgot password */
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.options a:hover {
+  text-decoration: underline;
+}
+
+/* Login Button */
+.login-button {
+  width: 100%;
+  padding: 14px; /* Increased padding */
+  background-color: #4338ca; /* Darker indigo for button */
+  color: #fff;
+  border: none;
+  border-radius: 28px; /* Fully rounded */
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.login-button:hover {
+  background-color: #3730a3; /* Slightly darker on hover */
+}
+
+/* Error Message Styling */
+#error-message {
+  color: #ef4444; /* Red color for error messages */
+  background-color: #fee2e2; /* Light red background */
+  border: 1px solid #fca5a5; /* Red border */
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 14px;
+  /* Initially hidden by inline style in HTML, displayed by JS */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .login-container {
+    max-width: 600px;
+    margin: 15px;
+  }
+
+  .decorative-section {
+    padding: 50px 30px;
+  }
+
+  .decorative-section .logo-image {
+    width: 200px;
+  }
+
+  .decorative-section h1 {
+    font-size: 28px;
+  }
+
+  .login-form-section {
+    padding: 45px 40px;
+  }
+
+  .login-form-section h2 {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 15px;
+  }
+
+  .login-container {
+    flex-direction: column;
+    max-width: 450px;
+    margin: 10px auto;
+    border-radius: 16px;
+  }
+
+  .decorative-section {
+    padding: 35px 25px;
+    flex-basis: auto;
+    min-height: 220px;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .decorative-section .logo-image {
+    width: 160px;
+  }
+
+  .decorative-section h1 {
+    font-size: 24px;
+    margin-top: 15px;
+  }
+
+  .login-form-section {
+    padding: 35px 25px;
+    flex-basis: auto;
+    border-radius: 0 0 16px 16px;
+  }
+
+  .login-form-section h2 {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+
+  .login-form-section .subtitle {
+    font-size: 14px;
+    margin-bottom: 25px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  .form-group input[type="email"],
+  .form-group input[type="password"] {
+    padding: 11px 11px 11px 38px;
+    font-size: 14px;
+  }
+
+  .form-group .input-icon {
+    left: 8px;
+    width: 18px;
+    height: 18px;
+  }
+
+  .options {
+    margin-bottom: 25px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .login-button {
+    padding: 13px;
+    font-size: 15px;
+    border-radius: 24px;
+  }
+
+  .theme-switcher {
+    top: 15px;
+    right: 15px;
+  }
+
+  #theme-toggle-btn {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (max-width: 520px) {
+  body {
+    padding: 10px;
+  }
+
+  .login-container {
+    max-width: 100%;
+    margin: 5px auto;
+    border-radius: 12px;
+  }
+
+  .decorative-section {
+    padding: 25px 20px;
+    min-height: 180px;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .decorative-section .logo-image {
+    width: 130px;
+  }
+
+  .decorative-section h1 {
+    font-size: 20px;
+    margin-top: 12px;
+  }
+
+  .login-form-section {
+    padding: 25px 20px;
+    border-radius: 0 0 12px 12px;
+  }
+
+  .login-form-section h2 {
+    font-size: 24px;
+    margin-bottom: 6px;
+  }
+
+  .login-form-section .subtitle {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 18px;
+  }
+
+  .form-group label {
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+
+  .form-group input[type="email"],
+  .form-group input[type="password"] {
+    padding: 10px 10px 10px 35px;
+    font-size: 13px;
+  }
+
+  .form-group .input-icon {
+    left: 6px;
+    width: 16px;
+    height: 16px;
+  }
+
+  .options {
+    margin-bottom: 20px;
+    gap: 10px;
+    font-size: 13px;
+  }
+
+  .remember-me input[type="checkbox"] {
+    width: 14px;
+    height: 14px;
+    margin-right: 6px;
+  }
+
+  .login-button {
+    padding: 12px;
+    font-size: 14px;
+    border-radius: 20px;
+  }
+
+  #error-message {
+    padding: 8px;
+    font-size: 13px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+  }
+
+  .theme-switcher {
+    top: 12px;
+    right: 12px;
+  }
+
+  #theme-toggle-btn {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media (max-width: 380px) {
+  .login-container {
+    border-radius: 8px;
+  }
+
+  .decorative-section {
+    padding: 20px 15px;
+    min-height: 150px;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .decorative-section .logo-image {
+    width: 110px;
+  }
+
+  .decorative-section h1 {
+    font-size: 18px;
+    margin-top: 10px;
+  }
+
+  .login-form-section {
+    padding: 20px 15px;
+    border-radius: 0 0 8px 8px;
+  }
+
+  .login-form-section h2 {
+    font-size: 22px;
+  }
+
+  .form-group input[type="email"],
+  .form-group input[type="password"] {
+    padding: 9px 9px 9px 32px;
+    font-size: 12px;
+  }
+
+  .login-button {
+    padding: 11px;
+    font-size: 13px;
+    border-radius: 16px;
+  }
+}
+
+/* Theme Switcher Styles */
+.theme-switcher {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+#theme-toggle-btn {
+  background: none;
+  border: 1px solid #e2e8f0;
+  color: #475569;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dark-theme #theme-toggle-btn {
+    border-color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#theme-toggle-btn .fa-sun { display: none; }
+#theme-toggle-btn .fa-moon { display: block; }
+
+.dark-theme #theme-toggle-btn .fa-sun { display: block; }
+.dark-theme #theme-toggle-btn .fa-moon { display: none; }

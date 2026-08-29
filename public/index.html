@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MoodTune - Discover music based on your mood">
+  <title>MoodTune | Mood-Based Music Recommendations</title>
+  <link rel="stylesheet" href="/stylesheets/Homepage.css">
+  <link rel="stylesheet" href="/stylesheets/profile.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="header-glass">
+    <div class="container">
+      <div class="title">
+        <h1>MoodTune</h1>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#moods">Moods</a></li>
+        </ul>
+        <div class="nav-actions">
+          <div class="auth-buttons logged-out">
+            <a href="/users/login" id="login-btn" class="btn-icon">Log In</a>
+            <a href="/users/register" id="register-btn" class="btn-primary">Register</a>
+          </div>
+          <div class="theme-switcher">
+            <button type="button" id="theme-toggle-btn" class="btn-icon">
+                <i class="fas fa-sun"></i>
+                <i class="fas fa-moon"></i>
+            </button>
+          </div>
+          <div class="auth-buttons logged-in" style="display: none;">
+            <a href="admin.html" id="profile-btn">Profile</a>
+            <form action="/users/logout?_method=DELETE" method="POST" class="logout-form-wrapper">
+              <button type="submit" class="btn btn-primary">Logout</button>
+            </form>
+          </div>
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h2>Find the perfect soundtrack for your mood</h2>
+        <a href="#moods" class="btn btn-primary">
+          <i class="fas fa-music"></i>
+          Get Started
+        </a>
+      </div>
+      <div class="hero-image">
+        <img src="/images/Capybara-Logo.png" alt="Music illustration">
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="container">
+      <div class="section-header">
+        <h2>How It Works</h2>
+        <p>MoodTune connects your emotional state with the perfect music</p>
+      </div>
+      <div class="features">
+        <div class="feature glass-gradient">
+          <div class="feature-icon">
+            <i class="fas fa-smile"></i>
+          </div>
+          <h3>Select Your Mood</h3>
+          <p>Choose from a variety of mood options that represent how you're feeling right now.</p>
+        </div>
+        <div class="feature glass-gradient">
+          <div class="feature-icon">
+            <i class="fas fa-music"></i>
+          </div>
+          <h3>Discover Music</h3>
+          <p>Recommend music attributes like valence, energy, and danceability to find the perfect match.</p>
+        </div>
+        <div class="feature glass-gradient">
+          <div class="feature-icon">
+            <i class="fas fa-headphones"></i>
+          </div>
+          <h3>Listen & Enjoy</h3>
+          <p>Preview songs directly in the app and save your favorites to your Spotify playlists.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="moods" class="moods">
+    <div class="container">
+      <div class="section-header">
+        <h2>How are you feeling today?</h2>
+        <p>Select a mood to get personalized music recommendations</p>
+      </div>
+      <div class="mood-grid">
+          <!-- Mood cards -->
+          <button type="button" class="mood-card glass-gradient" data-mood="happy"><span class="mood-icon"><i class="fas fa-grin-beam"></i></span><span class="mood-title">Happy</span></button>
+          <button type="button" class="mood-card glass-gradient" data-mood="sad"><span class="mood-icon"><i class="fas fa-sad-tear"></i></span><span class="mood-title">Sad</span></button>
+          <button type="button" class="mood-card glass-gradient" data-mood="energetic"><span class="mood-icon"><i class="fas fa-bolt"></i></span><span class="mood-title">Energetic</span></button>
+          <button type="button" class="mood-card glass-gradient" data-mood="relaxed"><span class="mood-icon"><i class="fas fa-couch"></i></span><span class="mood-title">Relaxed</span></button>
+          <button type="button" class="mood-card glass-gradient" data-mood="focused"><span class="mood-icon"><i class="fas fa-brain"></i></span><span class="mood-title">Focused</span></button>
+      </div>
+      <div class="sort-controls" style="margin-bottom: 1rem;">
+        <label for="sort-order">Sort by:</label>
+        <select id="sort-order" class = "custom-select">
+          <option value="asc" selected>Track Name A–Z</option>
+          <option value="desc">Track Name Z–A</option>
+        </select>
+      </div>
+      <div id="recommendation-results" class="search-results-container"></div>
+    </div>
+  </section>
+
+  <section id="search-music" class="search-section">
+      <div class="container">
+          <div class="section-header">
+              <h2>Search for Music</h2>
+              <p>Find specific songs, artists, or albums.</p>
+          </div>
+          <div class="spotify-connect-container"><a href="/spotify/login" class="btn btn-spotify"><i class="fab fa-spotify"></i> Connect to Spotify</a></div>
+          <form id="spotify-search-form" class="search-container glass">
+              <input type="text" id="search-query-input" placeholder="Enter song, artist, or album..." required>
+              <button type="submit" id="search-submit-btn" class="btn btn-primary"><i class="fas fa-search"></i> Search</button>
+          </form>
+          <div class="search-results-container" id="search-results-area"></div>
+      </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-bottom">
+        <p>© 2025 MoodTune. All rights reserved.</p>
+        <p>Powered by <a href="hhttps://developer.spotify.com/dashboard" target="_blank">Spotify Web API</a></p>
+      </div>
+    </div>
+  </footer>
+
+<script src="/javascripts/navigation.js?v=3"></script>
+<script src="/javascripts/theme-switcher.js?v=3"></script>
+<script src="/javascripts/login-status.js?v=3"></script>
+<script src="/javascripts/search-form.js?v=3"></script>
+<script src="/javascripts/mood-selector.js?v=3"></script>
+<script src="/javascripts/like-dislike.js?v=3"></script>
+<script src="/javascripts/session-timeout.js?v=3"></script>
+<script src="/javascripts/add-to-list.js?v=3"></script>
+
+</body>
+</html>
